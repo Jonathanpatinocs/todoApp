@@ -25,7 +25,7 @@ header {
 
 /*  Sidebar */ 
 
-#sidebar #title{
+#sidebar #projects-title{
     margin-top: 20px;
     text-align: center;
     font-size: 40px;
@@ -47,7 +47,18 @@ header {
 /*  Content */
 
 .content h1 {
-    text-align: center;
+    margin-left: auto;
+}
+.add-todo {
+    height: 30px;
+    width: 60px;
+    margin-left:auto;
+    margin-right: 15px;
+}
+.content-header {
+display: flex;
+align-items: center;
+justify-content: center;
 }
 .content #todo-list {
     display: flex;
@@ -56,4 +67,17 @@ header {
 }
 .todo {
     width: 400px;
+}
+
+.todo-overview {
+    display: flex;
+    gap: 10px;
+    
+}
+.todo-date {
+    margin-left: auto;
+}
+.hidden {
+    max-height: 0;
+    opacity: 0;
 }

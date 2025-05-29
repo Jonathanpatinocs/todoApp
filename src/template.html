@@ -9,7 +9,7 @@
     <header> To Do List</header>
     <div id="sidebar">
         <button id="add-project">add</button>
-        <div id="title">Projects</div>
+        <div id="projects-title">Projects</div>
         <div id="projects">
             <div class="project">project 1</div>
             <div class="project">project 2</div>
@@ -17,13 +17,29 @@
         </div>
     </div>
     <div class="content">
-        <h1>Project 1</h1>
+        <div class="content-header">
+            <h1>Project 1</h1>
+            <button class="add-todo">add</button>
+        </div>
+        
         <div id="todo-list">
             <div class="todo">
-                <input type="checkbox" name="todo1" id="todo1">
-                <label for="todo1">
-                    test
-                </label>
+                <div class="todo-overview">
+                    <input type="checkbox" name="todo1" id="todo1">
+                    <label for="todo1">
+                        <div class="todo-title">Get chores done</div>
+                    </label>
+                    <div class="todo-date">5/28/25</div>
+                    <div class="todo-dropdown"> \\// </div>
+                </div>
+                <div class="todo-all ">
+                    <p class="todo-description">
+                        - do  dishes <br>
+                        - clean room <br>
+                        - wash clothes <br>
+                    </p>
+                </div>
+               
             </div>
             <div class="todo">test</div>
         </div>
