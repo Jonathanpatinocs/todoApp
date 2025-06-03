@@ -7,9 +7,13 @@ class Project {
 }
 const projects = [];
 projects.push(new Project("project 1", 8));
+projects.push(new Project("projct 2", 4))
+
+
 
 
 function sidebarDom() {
+
     const sidebar = document.getElementById('sidebar');
     const addProjectButton = document.createElement('button');
     addProjectButton.id = "add-project"
@@ -20,22 +24,60 @@ function sidebarDom() {
     const projectsDiv = document.createElement('div');
     projectsDiv.id = "projects";
 
+    
+
+    addProjectButton.addEventListener('click', ()=> {
+        console.log("yes");
+        const modal = document.getElementById("projects-modal");
+        modal.showModal();
+        modal.className = "active";
+    });
+    
+    sidebar.append(addProjectButton, projectsTitle, projectsDiv);
+    displayProjects();
+    projectModal();
+}
+
+function displayProjects() {
+    const projectsDiv = document.getElementById("projects")
     projects.forEach(element => {
         const div = document.createElement('div');
         div.className = "project";
         div.innerText = element.name;
         projectsDiv.append(div);
     });
+}
 
-    addProjectButton.addEventListener('click', ()=> {
-        addProject()
+function projectModal() {
+    const exitProjectModal = document.getElementById('close-projects-modal');
+    exitProjectModal.addEventListener('click', ()=> {
+        closeProjectModal();
+    });
+
+    const addProjectButton = document.getElementById('projects-modal-add');
+    const title = document.getElementById('project-modal-title');
+    addProjectButton.addEventListener('click', (e)=> {
+        e.preventDefault();
+        const projectsDiv = document.getElementById("projects");
+        projects.push(new Project(title.value, 3));
+        console.log(projects);
+        closeProjectModal();
+        
+        const div = document.createElement('div');
+        div.className = "project";
+        div.innerText = title.value;
+        projectsDiv.append(div);
+
+        title.value = "";
     })
-    sidebar.append(addProjectButton, projectsTitle, projectsDiv)
-}
-function addProject() {
 
 }
+function closeProjectModal() {
+    const modal = document.getElementById("projects-modal");
+    modal.close();
+    modal.className = ""
 
+}
 
 export default(sidebarDom);
 /*
