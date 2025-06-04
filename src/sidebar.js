@@ -31,6 +31,7 @@ function sidebarDom() {
 }
 
 function displayProjects() {
+    console.log(projectManager.projects)
     const projectsDiv = document.getElementById("projects")
     projectsDiv.innerHTML = "";
     projectManager.projects.forEach(element => {
@@ -44,6 +45,7 @@ function displayProjects() {
             projectManager.removeProject(projectManager.projects.findIndex(project => project.name === element.name));
             displayProjects();
         })
+        
         div.append(button);
         projectsDiv.append(div);
     });
@@ -62,7 +64,6 @@ function projectModal() {
         e.preventDefault();
         const projectsDiv = document.getElementById("projects");
         projectManager.addProject(title.value)
-        console.log(projectManager.getAllProjects())
         closeProjectModal();
         
         displayProjects();
