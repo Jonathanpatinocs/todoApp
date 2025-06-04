@@ -1,13 +1,5 @@
-class Project {
-    constructor(name, id) {
-        this.name = name;
-        this.id = id;
-        this.list = [];
-    }
-}
-const projects = [];
-projects.push(new Project("project 1", 8));
-projects.push(new Project("projct 2", 4))
+import Project from "./projects";
+import projectManager from "./projects";
 
 
 
@@ -40,10 +32,19 @@ function sidebarDom() {
 
 function displayProjects() {
     const projectsDiv = document.getElementById("projects")
-    projects.forEach(element => {
+    projectsDiv.innerHTML = "";
+    projectManager.projects.forEach(element => {
         const div = document.createElement('div');
+        const button = document.createElement('button');
+        button.innerText = "x";
+        button.className = "remove-project-button";
         div.className = "project";
         div.innerText = element.name;
+        button.addEventListener('dblclick', ()=> {
+            projectManager.removeProject(projectManager.projects.findIndex(project => project.name === element.name));
+            displayProjects();
+        })
+        div.append(button);
         projectsDiv.append(div);
     });
 }
@@ -54,21 +55,19 @@ function projectModal() {
         closeProjectModal();
     });
 
+    const form = document.getElementById('projects-form');
     const addProjectButton = document.getElementById('projects-modal-add');
     const title = document.getElementById('project-modal-title');
-    addProjectButton.addEventListener('click', (e)=> {
+    form.addEventListener('submit', (e)=> {
         e.preventDefault();
         const projectsDiv = document.getElementById("projects");
-        projects.push(new Project(title.value, 3));
-        console.log(projects);
+        projectManager.addProject(title.value)
+        console.log(projectManager.getAllProjects())
         closeProjectModal();
         
-        const div = document.createElement('div');
-        div.className = "project";
-        div.innerText = title.value;
-        projectsDiv.append(div);
+        displayProjects();
 
-        title.value = "";
+        title.value = null;
     })
 
 }

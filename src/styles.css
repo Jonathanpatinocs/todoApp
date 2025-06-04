@@ -43,7 +43,11 @@ header {
     margin-right: 5px;
 
 }
-
+.project {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px;
+}
 /*  Content */
 
 .content h1 {
