@@ -29,6 +29,9 @@ export class Project {
     addTodo(todo) {
         this.list.push(todo);
     }
+    removeTodo(index) {
+        this.list.splice(index, 1)
+    }
     
 }
 

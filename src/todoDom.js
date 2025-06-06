@@ -32,6 +32,16 @@ function todoDom(todo) {
     todoDescription.className = "todo-description";
     todoDescription.innerText = todo.comment;
 
+    input.addEventListener('change', ()=> {
+        setTimeout(() => {
+        const projectIndex = projectManager.projects.findIndex(project => project.isActive === true);
+        const todoIndex = projectManager.projects[projectIndex].list.findIndex(todos => todos.title === todo.title)
+        projectManager.projects[projectIndex].removeTodo(todoIndex);
+        displayTodos(projectManager.projects[projectIndex]);
+        }, 1000);
+        
+    })
+
     label.append(todoTitle);
     todoOverview.append(input, label, todoDate, todoDropdown);
     todoAll.append(todoDescription);

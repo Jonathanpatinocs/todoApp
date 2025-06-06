@@ -34,31 +34,43 @@ function displayProjects() {
     console.log(projectManager.projects)
     const projectsDiv = document.getElementById("projects")
     projectsDiv.innerHTML = "";
-    projectManager.projects.forEach(element => {
-        const div = document.createElement('div');
-        const button = document.createElement('button');
-        button.innerText = "x";
-        button.className = "remove-project-button";
-        div.className = "project";
-        div.innerText = element.name;
-        button.addEventListener('dblclick', ()=> {
-            projectManager.removeProject(projectManager.projects.findIndex(project => project.name === element.name));
-            displayProjects();
-            displayTodos(projectManager.projects[0]);
-        })
-
-
-        div.addEventListener('click', ()=> {
-            projectManager.projects.forEach(element => {
-                element.isActive = false;
+    if (projectManager.projects.length >= 1) {
+        projectManager.projects.forEach(element => {
+            const div = document.createElement('div');
+            const button = document.createElement('button');
+            button.innerText = "x";
+            button.className = "remove-project-button";
+            div.className = "project";
+            div.innerText = element.name;
+            button.addEventListener('dblclick', ()=> {
+                projectManager.removeProject(projectManager.projects.findIndex(project => project.name === element.name));
+                displayProjects();
+                if (projectManager.projects.length >= 1) {
+                    displayTodos(projectManager.projects[0]);
+                }
+                
             })
-            displayTodos(element);
-            element.isActive = true;
-        })
-        
-        div.append(button);
-        projectsDiv.append(div);
-    });
+    
+    
+            div.addEventListener('click', ()=> {
+                projectManager.projects.forEach(element => {
+                    element.isActive = false;
+                })
+                displayTodos(element);
+                element.isActive = true;
+            })
+            
+            div.append(button);
+            projectsDiv.append(div);
+        });
+    }
+    else {
+        const contentDiv = document.getElementById('content-header');
+        contentDiv.innerText = "No Project Selected"
+        projectsDiv.style = "text-align:center;"
+        projectsDiv.innerText = "Press Add to add new Project"
+    }
+
 }
 
 function projectModal() {
