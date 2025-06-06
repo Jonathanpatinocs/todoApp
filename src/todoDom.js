@@ -28,10 +28,19 @@ function todoDom(todo) {
 
     const todoAll = document.createElement('todo-all');
     todoAll.className = "todo-all";
+    todoAll.classList.add("hidden");
     const todoDescription = document.createElement('p');
     todoDescription.className = "todo-description";
     todoDescription.innerText = todo.comment;
-
+    todoDropdown.addEventListener('click', ()=> {
+        if (todoAll.classList.contains("hidden")) {
+            todoAll.classList.remove("hidden");
+        }
+        else {
+            todoAll.classList.add("hidden")
+        }
+        
+    })
     input.addEventListener('change', ()=> {
         setTimeout(() => {
         const projectIndex = projectManager.projects.findIndex(project => project.isActive === true);
