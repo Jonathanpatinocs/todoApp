@@ -108,3 +108,50 @@ justify-content: center;
 #close-projects-modal {
     margin-left: auto;
 }
+
+#todo-modal {
+    margin-top: 100px;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    border: solid 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+#todo-modal.active {
+    height: 300px;
+    width: 500px;
+    opacity: 1;
+
+}
+
+#todo-modal-header {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+}
+#todo-modal-header button {
+    margin-left: auto;
+    margin-bottom: auto;
+}
+#todo-modal-header h1 {
+    margin-left: auto;
+}
+#todo-form {
+    width: 100%;
+}
+#todo-form input {
+    width: 91.5%;
+}
+#todo-form textarea {
+    width: 99%;
+    height: 150px;
+    resize: none;
+}
+#todo-modal-add {
+    width: 100%;
+    height: 40px;
+}

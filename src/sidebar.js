@@ -47,8 +47,13 @@ function displayProjects() {
             displayTodos(projectManager.projects[0]);
         })
 
+
         div.addEventListener('click', ()=> {
+            projectManager.projects.forEach(element => {
+                element.isActive = false;
+            })
             displayTodos(element);
+            element.isActive = true;
         })
         
         div.append(button);
