@@ -1,6 +1,6 @@
 import Project from "./projects";
 import projectManager from "./projects";
-
+import displayTodos from "./todoDom";
 
 
 
@@ -44,6 +44,11 @@ function displayProjects() {
         button.addEventListener('dblclick', ()=> {
             projectManager.removeProject(projectManager.projects.findIndex(project => project.name === element.name));
             displayProjects();
+            displayTodos(projectManager.projects[0]);
+        })
+
+        div.addEventListener('click', ()=> {
+            displayTodos(element);
         })
         
         div.append(button);

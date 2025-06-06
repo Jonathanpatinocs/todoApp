@@ -22,13 +22,27 @@ class Project {
         this.name = name;
         this.list = [];
     }
+    addTodo(todo) {
+        this.list.push(todo);
+    }
     
+}
+
+class Todo {
+    constructor(title, date, comment) {
+        this.title = title;
+        this.date = date;
+        this.comment = comment;
+    }
 }
 
 const projectManager = new ProjectManager();
 projectManager.addProject(("Project 1"));
 projectManager.addProject(("project 2"));
 
+projectManager.projects[0].addTodo(new Todo("title1", "date1", "comments1"));
+projectManager.projects[0].addTodo(new Todo("title2", "date2", "comments2"));
+projectManager.projects[0].addTodo(new Todo("title3", "date3", "comments3"));
 /* projectManager.removeProject(projectManager.projects.findIndex(project => project.name === "Project 1")); */
 
 export default (Project, projectManager);
