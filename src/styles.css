@@ -1,26 +1,39 @@
+:root {
+    --black: #222831;
+    --gray: #393E46;
+    --beige: #948979;
+    --light: #DFD0B8;
+}
+
 /*  Page Outline */ 
 body {
     margin: 0;
-    height: 100vh;
+    
+    min-height: 750px;
     display: grid;
     grid-template-columns: 1.5fr 4fr;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr 15fr;
     min-width: 735px;
+    background-color: #EEEEEE;
+    color: var(--black);
+    
 }
 div {
-    border: 1px solid black;
+    
 }
 #sidebar {
+    
     grid-row: 1/ -1;
     min-width: 250px;
+    border-right: solid 2px var(--gray);
     
 }
 header {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 45px;
-    min-height: 90px;
+    font-size: 30px;
+    height: 100%;
 }
 
 /*  Sidebar */ 
@@ -31,8 +44,11 @@ header {
     font-size: 40px;
     margin-bottom: 30px;
 }
-#sidebar #projects {
+#projects {
     margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     font-size: 20px;
 }
@@ -47,11 +63,19 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 9px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+}
+.remove-project-button {
+    border: none;
+    font-size: 2;
 }
 /*  Content */
-
+.content {
+    border-top: 2px solid var(--gray);
+}
 .content h1 {
-    margin-left: auto;
+    margin-left: 40%;
 }
 .add-todo {
     height: 30px;
@@ -63,14 +87,22 @@ header {
 display: flex;
 align-items: center;
 justify-content: center;
+
 }
 .content #todo-list {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 .todo {
-    width: 400px;
+    
+    min-width: 400px;
+    width: 70%;
+    padding: 10px;
+    border: 1px solid var(--beige);
+    border-radius: 10px;
+    background-color: var(--light);
 }
 
 .todo-overview {
@@ -85,6 +117,7 @@ justify-content: center;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
+    margin: 0;
     
 }
 

@@ -89,8 +89,13 @@ function projectModal() {
         closeProjectModal();
         
         displayProjects();
-
+        
         title.value = null;
+
+        if (projectManager.projects.length === 1) {
+            displayTodos(projectManager.projects[0]);
+            projectManager.projects[0].isActive = true;
+        }
     })
 
 }
@@ -100,6 +105,7 @@ function closeProjectModal() {
     modal.className = ""
 
 }
+
 
 export default(sidebarDom);
 /*

@@ -29,6 +29,7 @@ function todoDom(todo) {
     const todoAll = document.createElement('todo-all');
     todoAll.className = "todo-all";
     todoAll.classList.add("hidden");
+    
     const todoDescription = document.createElement('p');
     todoDescription.className = "todo-description";
     todoDescription.innerText = todo.comment;
@@ -40,7 +41,7 @@ function todoDom(todo) {
             todoAll.classList.add("hidden")
         }
         
-    })
+    });
     input.addEventListener('change', ()=> {
         setTimeout(() => {
         const projectIndex = projectManager.projects.findIndex(project => project.isActive === true);
@@ -49,7 +50,7 @@ function todoDom(todo) {
         displayTodos(projectManager.projects[projectIndex]);
         }, 1000);
         
-    })
+    });
 
     label.append(todoTitle);
     todoOverview.append(input, label, todoDate, todoDropdown);
